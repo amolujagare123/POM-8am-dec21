@@ -1,3 +1,5 @@
+package pages;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,7 +13,7 @@ public class Forgotpass {
     @FindBy (xpath = "//button[normalize-space()='Reset password']")
     WebElement btnReset;
 
-    Forgotpass(WebDriver driver)
+    public Forgotpass(WebDriver driver)
     {
         PageFactory.initElements(driver,this);
     }
