@@ -13,18 +13,19 @@ public class Login {
     WebElement txtUsername = driver.findElement(By.xpath(""));*/
 
     @FindBy (xpath = "//input[@id='email']")
-    WebElement txtUsername;
+    public WebElement txtUsername;
 
     @FindBy (xpath = "//input[@id='password']")
-    WebElement txtPassword;
+    public WebElement txtPassword;
 
     @FindBy (xpath = "//button[@type='submit']")
-    WebElement btnLogin;
+    public WebElement btnLogin;
 
     @FindBy (xpath = "//a[normalize-space()='I forgot my password']")
-    WebElement forgotPass;
+    public WebElement forgotPass;
 
-
+    @FindBy (xpath = "//label[normalize-space()='Email']")
+    public WebElement lblEmail;
 
     public Login(WebDriver driver)
     {

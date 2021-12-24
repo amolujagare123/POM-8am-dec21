@@ -10,8 +10,10 @@ import util.DoLogin;
 
 import java.io.IOException;
 import java.sql.*;
+import java.text.ParseException;
 import java.util.ArrayList;
 
+import static util.Conversion.*;
 import static util.MyDataProvider.getMyData;
 
 public class AddClientDataProviderTest extends DoLogin {
@@ -20,7 +22,7 @@ public class AddClientDataProviderTest extends DoLogin {
     public void addClientTest(String name,String surname,String language,String add1,
                               String add2,String city,String state,String zip,String country,
                               String gender,String birthdate,String phone,String mobile,
-                              String fax,String email,String web,String vat,String tax) throws ClassNotFoundException, SQLException {
+                              String fax,String email,String web,String vat,String tax) throws ClassNotFoundException, SQLException, ParseException {
         ArrayList<String> expected = new ArrayList<>();
 
         expected.add(name);
@@ -94,9 +96,15 @@ public class AddClientDataProviderTest extends DoLogin {
             actual.add(rs.getString("client_city"));
             actual.add(rs.getString("client_state"));
             actual.add(rs.getString("client_zip"));
-            actual.add(rs.getString("client_country"));
-            actual.add(rs.getString("client_gender"));
-            actual.add(rs.getString("client_birthdate"));
+
+            actual.add(convertCountry(rs.getString("client_country")));
+
+
+            actual.add(genderConversion(rs.getString("client_gender")));
+
+            actual.add(convertDate(rs.getString("client_birthdate")));
+
+
             actual.add(rs.getString("client_phone"));
             actual.add(rs.getString("client_mobile"));
             actual.add(rs.getString("client_fax"));
